@@ -75,10 +75,10 @@ jobs:
       - name: Deploy using Docker Compose
         run: |
           # Ensure the Docker image is pulled (or built again)
-          docker-compose -file myapp/docker/mysqlContainer/docker-compose.yml pull  # Specify custom path for the docker-compose.yml file
+          docker-compose -f myapp/docker/mysqlContainer/docker-compose.yml pull  # Specify custom path for the docker-compose.yml file
           
           # Start the services defined in your docker-compose.yml
-          docker-compose -file myapp/docker/mysqlContainer/docker-compose.yml up -d  # Run in detached mode (background)
+          docker-compose -f myapp/docker/mysqlContainer/docker-compose.yml up -d  # Run in detached mode (background)
       # Step 5: Build Spring Boot app with Maven (you can also use Gradle if preferred)
       - name: Build Spring Boot app with Maven
         run: mvn clean install -DskipTests --file myapp/pom.xml
