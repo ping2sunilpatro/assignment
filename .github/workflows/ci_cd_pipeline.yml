@@ -46,7 +46,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
       # Step 9: Build the Docker image
       - name: Build Docker image
-        run: docker build -file myapp/Dockerfile -t ${{ secrets.DOCKER_USERNAME }}/my-springboot-curd-app:latest .
+        run: docker build -file myapp/Dockerfile -t ${{ secrets.DOCKER_USERNAME }}/my-springboot-curd-app:latest myapp/
 
       # Step 10: Push the Docker image to Docker Hub
       - name: Push Docker image
