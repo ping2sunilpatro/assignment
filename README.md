@@ -21,7 +21,7 @@
 * Create Docker Hub credentials to access Docker images and repositories  
 * Need docker-compose file for creating mysql container named **library**
   > **Note**
-  > Saved in Project path : [docker-compose.yml](docker/mysqlContainer/docker-compose.yml)
+  > Saved in Project path : [docker-compose.yml](myapp/docker/mysqlContainer/docker-compose.yml)
   ##### Run the docker-compose command to startup the mysql container
   ```
   docker-compose up -d
@@ -143,7 +143,7 @@ To create a simple Spring Boot CRUD (Create, Read, Update, Delete) application i
   </p>
 * Run Spring boot application locally using the following Maven command. By default profile selected is **dev** environment
   ```
-  mvn spring-boot:run
+  mvn spring-boot:run 
   ```
 * To run the application on different ports
   ```
@@ -151,7 +151,7 @@ To create a simple Spring Boot CRUD (Create, Read, Update, Delete) application i
   ```
 * Run the packaged **JAR** file instead of using mvn spring-boot:run
   ```
-  java -jar target\myapp-1.0.jar
+  java -jar myapp\target\myapp-1.0.jar
   ```
 * Test the application
 ```
