@@ -621,9 +621,21 @@ Please refer to [ci_cd_pipeline.yml](.github/workflows/ci_cd_pipeline.yml)
  kubectl logs spring-boot-app-6d547cd469-n92b2
  kubectl logs spring-boot-app-6d547cd469-vr6xt
  ```
-
-
-
+ ### Test the LoadBalancing
+ * Make sure to have the mysql container up and running in docker desktop that must be created as a part of Prerequisities step     [Need docker-compose file for creating mysql container named **library**](#Prerequisities-needed)
+  <p align="center">
+      <img src="./assets/docker_mySQLContainer.png" width="650">
+  </p>
+* Run Spring boot application locally using the following Maven command at **port 8080**. By default profile selected is **dev** environment
+  ```
+  mvn spring-boot:run 
+  ```
+* Once it is confirmed, Spring Boot CRUD application is up and running
+* Then, run the testingFmk CLI application at **port 8082**
+* Once it start, it was show a switch-case structure in your command-line application that consumes the REST API endpoints of a CRUD Spring Boot application. Like shown in below screenshot.
+<p align="center">
+   <img src="./assets/cli.png" width="650">
+ </p> 
 
  
 
