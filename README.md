@@ -315,6 +315,28 @@ Please refer to [ci_cd_pipeline.yml](.github/workflows/ci_cd_pipeline.yml)
  ```
  docker-compose down -v
  ```
+ ### For the Metrics Monitoring
+ ---
+ 
+ * Open the prometheus url
+   ```
+   http://localhost:9090/
+   ```
+ * Check the **process cpu usage**
+   <p align="center">
+      <img src="./assets/prometheus_1.png" width="650">
+   </p>
+ * Check the **http server requests active seconds count**
+   <p align="center">
+      <img src="./assets/prometheus_2.png" width="650">
+   </p>
+ * Similarly, open the grafana url to visualize the prometheus data. For the first time it will ask for username:password give admin/admin and set the new password as admin.
+   ```
+   http://localhost:3000/
+   ```
+   <p align="center">
+      <img src="./assets/grafana_1.png" width="650">
+   </p>
  ### Run the Spring Boot CRUD application in Kubernetes cluster managed by Minikube  -- PROD Environment
  ---
  * To start Minikube using the Docker driver
