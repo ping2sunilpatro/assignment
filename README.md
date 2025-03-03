@@ -237,7 +237,7 @@ Please refer to [ci_cd_pipeline.yml](.github/workflows/ci_cd_pipeline.yml)
  ---
  * Stop the mysql container that is running in docker desktop as part of Prerequisities step [Need docker-compose file for creating mysql container named **library**](#Prerequisities-needed). Otherwise, there will be port conflict of 3306.
  * Stop the Spring Boot CRUD application which is running locally in port 8080. Otherwise, there will be a port conflict of 8080.
- * Now, start the Docker containers, networks, and volumes associated with a docker-compose project using [docker_compose.yml](docker/docker-compose.yml)
+ * Now, start the Docker containers, networks, and volumes associated with a docker-compose project using [docker_compose.yml](myapp/docker/docker-compose.yml)
  ```
  docker-compose up
  ```
@@ -311,7 +311,7 @@ Please refer to [ci_cd_pipeline.yml](.github/workflows/ci_cd_pipeline.yml)
       <img src="./assets/docker_deleteCustomer.png" width="650">
    </p>
 
- * To Stop and Remove Docker containers, networks, and volumes associated with a docker-compose project using [docker_compose.yml](docker/docker-compose.yml)
+ * To Stop and Remove Docker containers, networks, and volumes associated with a docker-compose project using [docker_compose.yml](myapp/docker/docker-compose.yml)
  ```
  docker-compose down -v
  ```
@@ -346,33 +346,33 @@ Please refer to [ci_cd_pipeline.yml](.github/workflows/ci_cd_pipeline.yml)
  docker info
  ```
 
- * Create a configmap yaml file [See here](kubernetes/configMap.yaml). This ConfigMap stores the database URL and some other Spring Boot-related settings.
+ * Create a configmap yaml file [See here](myapp/kubernetes/configMap.yaml). This ConfigMap stores the database URL and some other Spring Boot-related settings.
  * Apply the configmap
    ```
    kubectl apply -f configmap.yaml
    ```
- * Create a secret yaml file [See here](kubernetes/secret.yaml). The secret is storing sensitive information, such as db username and password.
+ * Create a secret yaml file [See here](myapp/kubernetes/secret.yaml). The secret is storing sensitive information, such as db username and password.
  * Apply the secret
    ```
    kubectl apply -f secret.yaml
    ```
    
  * To start MySQL Container on Minikube using configmap.yaml and secret.yaml and expose it through a service
-   - Use mysql-deployment.yaml [See here](kubernetes/mysql-deployment.yaml)
+   - Use mysql-deployment.yaml [See here](myapp/kubernetes/mysql-deployment.yaml)
      ```
      kubectl apply -f mysql-deployment.yaml
      ```
-   - Use mysql-service.yaml [See here](kubernetes/mysql-service.yaml)
+   - Use mysql-service.yaml [See here](myapp/kubernetes/mysql-service.yaml)
      ```
      kubectl apply -f mysql-service.yaml
      ```
      
  * To start the Spring Boot CRUD application on Minikube using configmap.xml and secret.xml by fetching the image from docker hub
-    - Use spring-boot-deployment.yaml [See here](kubernetes/spring-boot-deployment.yaml)
+    - Use spring-boot-deployment.yaml [See here](myapp/kubernetes/spring-boot-deployment.yaml)
      ```
      kubectl apply -f spring-boot-deployment.yaml
      ```
-   - Use spring-boot-service.yaml [See here](kubernetes/spring-boot-service.yaml)
+   - Use spring-boot-service.yaml [See here](myapp/kubernetes/spring-boot-service.yaml)
      ```
      kubectl apply -f spring-boot-service.yaml
      ```
@@ -552,7 +552,7 @@ Please refer to [ci_cd_pipeline.yml](.github/workflows/ci_cd_pipeline.yml)
    kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
    ```
    
-* Create a **Horizontal Pod Autoscaler** deployment file [See here](kubernetes/spring-boot-app-hpa.yaml)
+* Create a **Horizontal Pod Autoscaler** deployment file [See here](myapp/kubernetes/spring-boot-app-hpa.yaml)
 * Apply the hpa file
   ```
   kubectl apply -f spring-boot-app-hpa.yaml
@@ -563,7 +563,7 @@ Please refer to [ci_cd_pipeline.yml](.github/workflows/ci_cd_pipeline.yml)
   kubectl get hpa
   ```
  ### For Configuring the LoadBalacing
- * Make sure in the spring-boot-service.yaml file you need to use the **type as LoadBalancer**, which means it this application will provision an external load       balancer [Check the file](kubernetes/spring-boot-service.yaml)
+ * Make sure in the spring-boot-service.yaml file you need to use the **type as LoadBalancer**, which means it this application will provision an external load       balancer [Check the file](myapp/kubernetes/spring-boot-service.yaml)
 
  
  ### Test the Autoscaler
