@@ -641,7 +641,7 @@ Please refer to [ci_cd_pipeline.yml](.github/workflows/ci_cd_pipeline.yml)
   
 * Once it is confirmed, Spring Boot CRUD application is up and running
 * Then, run the testingFmk CLI application at **port 8082**
-* Once it start, it was show a switch-case structure in your command-line application that consumes the REST API endpoints of a CRUD Spring Boot application. Like shown in below screenshot.
+* Once it start, it was show a **switch-case structure** in your command-line application that **consumes the REST API endpoints** of a **CRUD Spring Boot application**. Like shown in below screenshot.
 <p align="center">
    <img src="./assets/cli.png" width="650">
  </p> 
