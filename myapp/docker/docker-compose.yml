@@ -1,0 +1,74 @@
+version: '3.7'
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql-db
+    environment:
+      MYSQL_ROOT_PASSWORD: pass
+      MYSQL_DATABASE: library_db
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p", "pass"]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 10s
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql  # Mount the init.sql script
+      - mysql_data:/var/lib/mysql  # Ensure data persistence
+    networks:
+      - myapp-network
+  # Spring Boot Application
+  app:
+    image: sunilthedevops/my-springboot-curd-app:latest   # Use your Spring Boot app image
+    build:
+      context: .
+      dockerfile: Dockerfile  # If you're building the app image here
+    ports:
+      - "8080:8080"         # Expose the Spring Boot app
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-db:3306/library_db  # MySQL database URL inside the container
+      SPRING_DATASOURCE_USERNAME: root  # MySQL username
+      SPRING_DATASOURCE_PASSWORD: pass  # MySQL password
+      SPRING_PROFILES_ACTIVE: uat3
+    networks:
+      - myapp-network
+    depends_on:
+      mysql:
+        condition: service_healthy  # Wait for MySQL to be healthy before starting Spring Boot
+
+
+  # Prometheus Service
+  prometheus:
+    image: prom/prometheus:v2.44.0
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    networks:
+      - myapp-network
+    restart: unless-stopped
+
+  # Grafana Service
+  grafana:
+    image: grafana/grafana:9.5.2
+    container_name: grafana
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin  # Set Grafana admin password
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
+    networks:
+      - myapp-network
+    depends_on:
+      - prometheus
+    restart: unless-stopped
+volumes:
+  mysql_data:
+    driver: local
+networks:
+  myapp-network:
+    driver: bridge
