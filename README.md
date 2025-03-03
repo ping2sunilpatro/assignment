@@ -151,7 +151,7 @@ To create a simple Spring Boot CRUD (Create, Read, Update, Delete) application i
   ```
 * Run the packaged **JAR** file instead of using mvn spring-boot:run
   ```
-  java -jar myapp\target\myapp-1.0.jar
+  java -jar target\myapp-1.0.jar
   ```
 * Test the application
 ```
@@ -208,7 +208,7 @@ curl.exe -u dev:devPassword -X DELETE --location http://127.0.0.1:8080/api/custo
   ```
   mvn -Dtest=CustomerControllerTest#testGetCustomerById test
   ```
-* Run both unit and integration testing. For integration testing, we are using **Test** profile which is our **TEST** environment. It takes the username and password to authenticate from [application-test.yaml](src/main/resources/application-test.yaml)
+* Run both unit and integration testing. For integration testing, we are using **Test** profile which is our **TEST** environment. It takes the username and password to authenticate from [application-test.yaml](myapp/src/main/resources/application-test.yaml)
   ```
   mvn test
   ```
@@ -226,7 +226,7 @@ Please refer to [ci_cd_pipeline.yml](.github/workflows/ci_cd_pipeline.yml)
     - Push the docker image
   - Deploy
     - Setting up Java and Docker-Compose environments
-    - Deploy the mysql Container using [docker_compose.yml](docker/mysqlContainer/docker-compose.yml)
+    - Deploy the mysql Container using [docker_compose.yml](myapp/docker/mysqlContainer/docker-compose.yml)
     - Build 
     - Run the application
       > **Note**
