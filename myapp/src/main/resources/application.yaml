@@ -1,24 +1,17 @@
 spring:
   application:
     name: myapp
-  datasource:
-    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1
-    driverClassName: org.h2.Driver
-    username: sa
-    password: password
-  jpa:
-    database-platform: org.hibernate.dialect.H2Dialect  # Make sure to use MySQLDialect
-    show-sql: true   # Set to true to log SQL queries in the console (for debugging)
-    hibernate:
-      ddl-auto: update    # Can be 'none', 'update', 'create', 'create-drop', etc.
-    properties:
-      hibernate:
-        format_sql: true
-        use_sql_comments: true
-  sql:
-    init:
-      mode: always
-  h2:
-    console:
-      enabled: true
-      path: /h2-console
+  # For development environment
+  profiles:
+    active: dev
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: ["*", "prometheus" ]
+
+
+
+
+

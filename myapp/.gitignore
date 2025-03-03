@@ -32,5 +32,12 @@ build/
 ### VS Code ###
 .vscode/
 
+### Git ###
+.gitattributes
+
+### mvn ###
+.mvn/
+mvnw
+mvnw.cmd
 
 logs/
