@@ -1,10 +1,7 @@
 package com.example.myapp.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+
 
 @Entity
 @Table(name = "CUSTOMER_T")
@@ -12,7 +9,8 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;  // PK - UUID
-
+    @Version
+    Long version;
     @Column(name= "FIRST_NAME")
     String firstName;
     @Column(name= "MIDDLE_NAME")
