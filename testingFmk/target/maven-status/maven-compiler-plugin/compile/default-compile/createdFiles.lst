@@ -1,0 +1,7 @@
+com\example\test\model\CustomerRequest.class
+com\example\test\response\ResponseData.class
+com\example\test\model\Customer.class
+com\example\test\response\ResponseHeader.class
+com\example\test\CrudCliApplication.class
+com\example\test\config\RestTemplateConfig.class
+com\example\test\model\CustomerResponse.class
