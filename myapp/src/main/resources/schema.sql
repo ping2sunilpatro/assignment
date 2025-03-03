@@ -1,6 +1,7 @@
 drop table CUSTOMER_T if exists;
 create table CUSTOMER_T (
     ID INTEGER AUTO_INCREMENT PRIMARY KEY,
+    VERSION INTEGER,
 	FIRST_NAME varchar(255),
 	MIDDLE_NAME varchar(255),
 	LAST_NAME varchar(255),

@@ -7,113 +7,31 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
+@Data // Generates getters, setters, toString(), equals(), and hashCode() methods automatically
+@NoArgsConstructor // Generates a no-args constructor
+@AllArgsConstructor // Generates a constructor with all arguments
+@Builder // Adds a builder pattern for easy object creation
 @Table(name = "CUSTOMER_T")
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;  // PK - UUID
-
+    //@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "customer_seq")
+    //@SequenceGenerator(name = "customer_seq", sequenceName = "customer_sequence", allocationSize = 1)
+    private Long id;  // PK - UUID
+    @Version
+    private Long version;
     @Column(name= "FIRST_NAME")
-    String firstName;
+    private String firstName;
     @Column(name= "MIDDLE_NAME")
-    String middleName;  // Can be nullable
+    private String middleName;  // Can be nullable
     @Column(name= "LAST_NAME")
-    String lastName;
+    private String lastName;
+
     @Column(name="EMAIL_ADDRESS", nullable = false, unique = true)
-    String emailAddress; // Unique
-    @Column(name= "COUNTRY_CODE")
-    private String countryCode;
-    @Column(name= "AREA_CODE")
-    private Integer areaCode;
-    @Column(name= "PREFIX")
-    private Integer prefix;
-    @Column(name= "LINE_NUMBER")
-    private Integer lineNumber;
+    private String emailAddress; // Unique
 
-    public Customer() {
-    }
+    @Embedded
+    private PhoneNumber phoneNumber;
 
-    public Customer(Long id, String firstName, String middleName, String lastName, String emailAddress, String countryCode, Integer areaCode, Integer prefix, Integer lineNumber) {
-        this.id = id;
-        this.firstName = firstName;
-        this.middleName = middleName;
-        this.lastName = lastName;
-        this.emailAddress = emailAddress;
-        this.countryCode = countryCode;
-        this.areaCode = areaCode;
-        this.prefix = prefix;
-        this.lineNumber = lineNumber;
-    }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getMiddleName() {
-        return middleName;
-    }
-
-    public void setMiddleName(String middleName) {
-        this.middleName = middleName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getEmailAddress() {
-        return emailAddress;
-    }
-
-    public void setEmailAddress(String emailAddress) {
-        this.emailAddress = emailAddress;
-    }
-
-    public String getCountryCode() {
-        return countryCode;
-    }
-
-    public void setCountryCode(String countryCode) {
-        this.countryCode = countryCode;
-    }
-
-    public Integer getAreaCode() {
-        return areaCode;
-    }
-
-    public void setAreaCode(Integer areaCode) {
-        this.areaCode = areaCode;
-    }
-
-    public Integer getPrefix() {
-        return prefix;
-    }
-
-    public void setPrefix(Integer prefix) {
-        this.prefix = prefix;
-    }
-
-    public Integer getLineNumber() {
-        return lineNumber;
-    }
-
-    public void setLineNumber(Integer lineNumber) {
-        this.lineNumber = lineNumber;
-    }
 }
