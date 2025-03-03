@@ -1,11 +1,8 @@
 package com.example.myapp.service;
 
-import com.example.myapp.controller.CustomerController;
 import com.example.myapp.entity.Customer;
 import com.example.myapp.exception.custom.CustomerNotFoundException;
-import com.example.myapp.exception.custom.CustomersNotFoundException;
 import com.example.myapp.mapper.CustomerMapper;
-import com.example.myapp.model.CustomerRequest;
 import com.example.myapp.model.CustomerResponse;
 import com.example.myapp.repository.CustomerRepository;
 import jakarta.transaction.Transactional;
@@ -13,11 +10,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service

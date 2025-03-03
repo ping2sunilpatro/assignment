@@ -4,7 +4,6 @@ import com.example.myapp.exception.custom.*;
 import com.example.myapp.exception.custom.model.ErrorResponse;
 import com.example.myapp.exception.custom.model.SuccessResponse;
 import com.example.myapp.response.ResponseMessage;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,9 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.servlet.resource.NoResourceFoundException;
@@ -25,11 +22,6 @@ import java.util.stream.Collectors;
 @RestControllerAdvice // Use @RestControllerAdvice to handle exceptions globally in REST controllers
 public class MyAppGlobalExceptionHandling {
 
-/*    @ExceptionHandler(CustomerNotFoundException.class)
-    public ResponseEntity<ResponseMessage> handleCustomerNotFoundException(CustomerNotFoundException ex) {
-        ErrorResponse errorResponse = new ErrorResponse(ex.getMessage(),null,  HttpStatus.NOT_FOUND);
-        return new ResponseEntity<>(ResponseMessage.generateResponse(errorResponse), HttpStatus.NOT_FOUND);
-    }*/
     @ExceptionHandler(CustomerNotFoundException.class)
     public ResponseEntity<ResponseMessage> handleCustomerNotFoundException(CustomerNotFoundException ex) {
         ResponseMessage responseMessage = ResponseMessage.generateResponse(new SuccessResponse(

@@ -1,16 +1,10 @@
 package com.example.myapp.response;
 
 import com.example.myapp.exception.custom.model.BaseResponse;
-import com.example.myapp.exception.custom.model.ErrorResponse;
-import com.example.myapp.exception.custom.model.SuccessResponse;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.http.HttpStatus;
-
-import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Getter
 @Setter
