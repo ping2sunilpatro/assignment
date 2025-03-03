@@ -621,7 +621,7 @@ Please refer to [ci_cd_pipeline.yml](.github/workflows/ci_cd_pipeline.yml)
  kubectl logs spring-boot-app-6d547cd469-n92b2
  kubectl logs spring-boot-app-6d547cd469-vr6xt
  ```
- ### Created a Testing Framework Application, a command-line based that consumes the SpringBoot CRUD application
+ ### Created a Testing Framework Application, a command-line based that consumes the SpringBoot CRUD app
  ---
  
  * Make sure to have the mysql container up and running in docker desktop that must be created as a part of Prerequisities step     [Need docker-compose file for creating mysql container named **library**](#Prerequisities-needed)
