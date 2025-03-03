@@ -122,11 +122,12 @@ To create a simple Spring Boot CRUD (Create, Read, Update, Delete) application i
 * **Prometheus and Grafana** is only setup in UAT3 envrionment
 * Application is **secure** at all environment
 * **AutoScaling** and **LoadBalancing** is taken care only in PROD environment
+* Created **TestingFmk** a command-line based that consumes the SpringBoot CRUD app
 
 ### Project Structure
 ---
 <p align="center">
-  <img src="./assets/projectstructure_1.png" width="650">
+  <img src="./assets/projectstructure_2.png" width="650">
 </p>
 
 ### Build the application without Running Tests
@@ -232,6 +233,10 @@ Please refer to [ci_cd_pipeline.yml](.github/workflows/ci_cd_pipeline.yml)
       > **Note**
       > This CRUD Spring Boot application will connect to external MYSQL database running in mysql Container in docker
     - Verify the health of the application
+
+   <p align="center">
+      <img src="./assets/github_cicd.png" width="650">
+   </p>
       
  ### Run the Spring Boot CRUD application in Dockerized Environment  -- UAT3 Environment
  ---
